@@ -2,6 +2,7 @@
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 import { SunIcon, MoonIcon } from '@radix-ui/react-icons'
+import { FaMagnifyingGlass } from 'react-icons/fa6'
 
 const Navbar = () => {
     const { theme, setTheme } = useTheme()
@@ -17,11 +18,10 @@ const Navbar = () => {
                 </h1>
 
                 <div className="flex items-center gap-6">
-                    <ul className="flex gap-4 text-sm">
-                        <li><a href="#" className="hover:underline">Home</a></li>
-                        <li><a href="#" className="hover:underline">About</a></li>
-                        <li><a href="#" className="hover:underline">Contact</a></li>
-                    </ul>
+                    <div className="flex items-center gap-2 p-2 rounded-xl border border-gray-200 dark:border-gray-800">
+                        <FaMagnifyingGlass />
+                        <input type="text" placeholder='Search' className="focus:outline-none" />
+                    </div>
 
                     <button
                         onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}

@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import Navbar from "@/components/Navbar";
 import { booksResponse } from '@/types/responseType';
 import { FetchHelper } from '@/utils/FetchHelper';
+import Card from '@/components/Card';
 
 export default function Home() {
   const { data } = useQuery({
@@ -13,14 +14,14 @@ export default function Home() {
 
   return (
     <>
-      <Navbar />
-      <h1>Hello world</h1>
-      {data?.map((book: booksResponse) => (
-        <div key={book.id}>
-          <h2>{book.Title}</h2>
-          <p>{book.Publisher}</p>
-        </div>
-      ))}
-    </>
+  <Navbar />
+  <div className="flex h-screen p-7 justify-center">
+  <div className="grid grid-cols-4 gap-4 w-full">
+    {data?.map((book: booksResponse) => (
+      <Card data={book} key={book.id} />
+    ))}
+  </div>
+  </div>
+</>
   );
 }
