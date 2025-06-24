@@ -14,3 +14,55 @@
 body{
   @apply transition-all ease-in-out duration-500
 }
+
+.data-detail{
+  @apply text-lg font-semibold font-mono
+}
+
+.detail-xl{
+  @apply text-xl font-semibold font-mono
+}
+
+.detail-button {
+  --color: #155dfc;
+  font-family: inherit;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border: 2px solid var(--color);
+  transition: color 0.5s;
+  z-index: 1;
+  font-family: monospace;
+  color: var(--color);
+}
+
+.detail-button:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background: var(--color);
+  height: 150px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+.detail-button:hover {
+  color: #fff;
+}
+
+.detail-button:before {
+  top: 100%;
+  left: 100%;
+  transition: all 0.7s;
+}
+
+.detail-button:hover:before {
+  top: -30px;
+  left: -30px;
+}
+
+.detail-button:active:before {
+  background: #155dfc;
+  transition: background 0s;
+}
