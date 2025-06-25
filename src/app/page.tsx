@@ -46,19 +46,18 @@ export default function Home() {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [sortBy]);
+  }, [sortBy, searchQuery]);
 
   const handleSearchResults = (results: booksResponse[], query: string) => {
     setSearchQuery(query);
     const hasResults = results.length > 0 || query === '';
     setFilteredBooks(results.length > 0 ? results : data || []);
     setHasSearchResults(hasResults);
-    setCurrentPage(1);
   }
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currentBooks = sortedBooks?.slice(startIndex, endIndex) || [];
-  const totalPages = Math.ceil(sortedBooks.length / itemsPerPage);
+  const totalPages = Math.ceil((sortedBooks?.length || 0) / itemsPerPage);
 
   return (
     <>
